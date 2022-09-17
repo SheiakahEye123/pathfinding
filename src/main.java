@@ -37,18 +37,22 @@ public class main {
         } catch (IOException e) {
             System.err.format("doesnt work");
         }
-        //for (ArrayList<Integer> integers : intmap) {
-        //    System.out.println(integers);
-        //}
-
-        for (int y = 5; y < intmap.size() + 5;) {
-            for (int x = 5; x < intmap.get(0).size() + 5;) {
-                if (intmap.get(y).get(x + 1) == 0 || intmap.get(y).get(x - 1) == 0 || intmap.get(y - 1).get(x) == 0|| intmap.get(y + 1).get(x) == 0) {
-                    stringmap.get(y).set(x,"n");
+        counter = 0;
+        for (int y = 0; y < intmap.size();y++) {
+            for (int x = 0; x < intmap.get(0).size();x++) {
+                if (intmap.get(y).get(Math.abs(x + 1)) == 0 || intmap.get(y).get(Math.abs(x - 1)) == 0 || intmap.get(Math.abs(y - 1)).get(x) == 0|| intmap.get(Math.abs(y + 1)).get(x) == 0) {
+                    if (stringmap.get(y).get(x + 1) == "d" || stringmap.get(y).get(x - 1) == "d" || stringmap.get(y - 1).get(x) == "d"|| stringmap.get(y + 1).get(x) == "d") {
+                        stringmap.get(y).set(x, "n");
+                    }
+                    else {
+                        stringmap.get(y).set(x, "u");
+                    }
                 }
-                if (stringmap.get(y).get(x) == "n") {
+                else {
+                    stringmap.get(y).set(x,"d");
                 }
             }
+            System.out.println(intmap.get(y));
         }
     }
 }
